@@ -1,0 +1,66 @@
+<div class="container">
+  <h1>Reactive Form Example</h1>
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <label for="name">Name:</label>
+    <input id="name" formControlName="name" />
+    <div
+      *ngIf="
+        registrationForm.get('name')?.invalid &&
+        registrationForm.get('name')?.touched
+      "
+    >
+      <small *ngIf="registrationForm.get('name')?.errors?.['required']"
+        >Name is required.</small
+      >
+      <small *ngIf="registrationForm.get('name')?.errors?.['minlength']">
+        Name must be at least 3 characters long.
+      </small>
+    </div>
+
+    <label for="email">Email:</label>
+    <input id="email" formControlName="email" />
+    <div
+      *ngIf="
+        registrationForm.get('email')?.invalid &&
+        registrationForm.get('email')?.touched
+      "
+    >
+      <small *ngIf="registrationForm.get('email')?.errors?.['required']"
+        >Email is required.</small
+      >
+      <small *ngIf="registrationForm.get('email')?.errors?.['email']"
+        >Invalid email format.</small
+      >
+    </div>
+
+    <label for="password">Password:</label>
+    <input id="password" type="password" formControlName="password" />
+    <div
+      *ngIf="
+        registrationForm.get('password')?.invalid &&
+        registrationForm.get('password')?.touched
+      "
+    >
+      <small *ngIf="registrationForm.get('password')?.errors?.['required']"
+        >Password is required.</small
+      >
+      <small *ngIf="registrationForm.get('password')?.errors?.['minlength']">
+        Password must be at least 6 characters long.
+      </small>
+    </div>
+    <div formArrayName="skills">
+      <label>Skills</label>
+      <div
+        *ngFor="
+          let control of skills.controls;
+          let i = index
+        "
+      >
+        <input [formControlName]="i" type="text" placeholder="Skills {{i + 1}}" />
+        <button type="button" (click)="skills.removeAt(i)">Remove</button>
+      </div>
+      <button type="button" (click)="addSkill('')">Add Skill</button>
+    </div>
+    <button type="submit" [disabled]="registrationForm.invalid">Submit</button>
+  </form>
+</div>

@@ -1,0 +1,77 @@
+<div class="progress-wrapper">
+  <div id="progress-bar-container">
+    <ul>
+      <li
+        class="step step01"
+        [ngClass]="step.stepName == activeStep.stepName ? 'active' : ''"
+        *ngFor="let step of stepList; let i = index"
+        (click)="changeState(i)"
+      >
+        <div class="step-inner">{{ step.stepName }}</div>
+      </li>
+    </ul>
+    <div id="line">
+      <div id="line-progress"></div>
+    </div>
+    <!-- progress-bar-container -->
+    <div id="progress-content-section">
+      <ng-container *ngIf="activeStep.stepName == 'Basic Details'">
+        <div
+          class="section-content step1"
+          [ngClass]="activeStep.stepName == 'Basic Details' ? 'active' : ''"
+        >
+          <h2>Step 1</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat,
+            impedit! Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            Necessitatibus, soluta impedit. Eligendi aliquam ratione porro minus
+            temporibus facilis iure numquam.
+          </p>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="activeStep.stepName == 'Skills'">
+        <div
+          class="section-content step2"
+          [ngClass]="activeStep.stepName == 'Skills' ? 'active' : ''"
+        >
+          <h2>Step 2</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat,
+            impedit! Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            Necessitatibus, soluta impedit. Eligendi aliquam ratione porro minus
+            temporibus facilis iure numquam. Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Repellat, impedit! Lorem ipsum dolor
+            sit amet consectetur, adipisicing elit. Necessitatibus, soluta
+            impedit. Eligendi aliquam ratione porro minus temporibus facilis
+            iure numquam.
+          </p>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="activeStep.stepName == 'Experience'">
+        <div
+          class="section-content step3"
+          [ngClass]="activeStep.stepName == 'Experience' ? 'active' : ''"
+        >
+          <h2>Step 3</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat,
+            impedit! Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            Necessitatibus, soluta impedit. Eligendi aliquam ratione porro minus
+            temporibus facilis iure numquam. Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Repellat, impedit! Lorem ipsum dolor
+            sit amet consectetur, adipisicing elit. Necessitatibus, soluta
+            impedit. Eligendi aliquam ratione porro minus temporibus facilis
+            iure numquam. Lorem ipsum dolor sit amet consectetur adipisicing
+            elit. Repellat, impedit! Lorem ipsum dolor sit amet consectetur,
+            adipisicing elit. Necessitatibus, soluta impedit. Eligendi aliquam
+            ratione porro minus temporibus facilis iure numquam.
+          </p>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <!-- progress-wrapper -->
+</div>
+<br><br><br><br><br>
+<hr>
+<app-reactive-form></app-reactive-form>
